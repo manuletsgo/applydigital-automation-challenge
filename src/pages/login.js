@@ -25,8 +25,8 @@ class LoginPage extends Page {
     await expect(this.h2TitleSignup).toMatchText(subtitleSignup)
   }
 
-  async registerUser({ firstName, emailAddress }) {
-    await this.inputName.fill(firstName)
+  async registerUser({ firstNameSignup, emailAddress }) {
+    await this.inputName.fill(firstNameSignup)
     await this.inputEmailAddressSignUp.fill(emailAddress)
     await this.buttonSignup.click()
   }

@@ -4,6 +4,8 @@ const { HomePage } = require('pages/home')
 const { ProductDetailsPage } = require('pages/productDetails')
 const { CartPage } = require('pages/cart')
 const { LoginPage } = require('pages/login')
+const { SignupPage } = require('pages/signup')
+const { AccountCreatedPage } = require('pages/accountCreated')
 
 const { blockAds } = require('utils/network')
 
@@ -35,6 +37,24 @@ test.describe('@smoke Checkout Tests', () => {
     await cartPage.modalDialog.accessLogin()
 
     const loginPage = new LoginPage(page)
-    await loginPage.registerUser(data.auth.login.user)
+    await loginPage.registerUser(data.auth.signup)
+
+    const signupPage = new SignupPage(page)
+    await signupPage.load()
+    await signupPage.validateTitle(data.auth.signup)
+    await signupPage.fillSignupForm(data.auth.signup)
+
+    const authData = data.auth
+
+    const accountCreated = new AccountCreatedPage(page)
+    await accountCreated.validateTitle(data.auth.accountCreated)
+    await accountCreated.successMessage(data.auth.accountCreated)
+    await accountCreated.continue()
+
+    await homePage.load()
+    await homePage.header.validateUserLogged(authData.signup)
+    await homePage.header.accessCart()
+
+    await cartPage.validateBreadcrumb(data.cart.page)
   })
 })
