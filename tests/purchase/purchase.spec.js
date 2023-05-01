@@ -6,13 +6,16 @@ const { CartPage } = require('pages/cart')
 const { LoginPage } = require('pages/login')
 const { SignupPage } = require('pages/signup')
 const { AccountCreatedPage } = require('pages/accountCreated')
+const { CheckoutPage } = require('pages/checkout')
+const { PaymentPage } = require('pages/payment')
+const { PaymentDonePage } = require('pages/paymentDone')
 
 const { blockAds } = require('utils/network')
 
 test.describe.configure({ mode: 'parallel' })
 
-test.describe('@smoke Checkout Tests', () => {
-  test('@checkout should be possible to add first item to the cart and do checkout', async ({
+test.describe('@smoke Purchase Tests', () => {
+  test('@purchase should be possible to create a purchase request', async ({
     page,
     data
   }) => {
@@ -48,13 +51,34 @@ test.describe('@smoke Checkout Tests', () => {
 
     const accountCreated = new AccountCreatedPage(page)
     await accountCreated.validateTitle(data.auth.accountCreated)
-    await accountCreated.successMessage(data.auth.accountCreated)
+    await accountCreated.validateSuccessMessage(data.auth.accountCreated)
     await accountCreated.continue()
 
     await homePage.load()
     await homePage.header.validateUserLogged(authData.signup)
     await homePage.header.accessCart()
 
-    await cartPage.validateBreadcrumb(data.cart.page)
+    await cartPage.validateBreadcrumb(data.purchase.cart)
+    await cartPage.proceedToCheckout()
+
+    const checkoutPage = new CheckoutPage(page)
+    await checkoutPage.load()
+    await checkoutPage.addComment(data.purchase.checkout)
+    await checkoutPage.placeOrder()
+
+    const paymentPage = new PaymentPage(page)
+    await paymentPage.load()
+    await paymentPage.validateTitle(data.purchase.payment)
+    await paymentPage.payAndConfirmOrder(data.purchase.payment)
+
+    const paymentDonePage = new PaymentDonePage(page)
+    await paymentDonePage.load()
+    await paymentDonePage.validateTitle(data.purchase.paymentDone)
+    await paymentDonePage.validateSuccessMessage(data.purchase.paymentDone)
+    await paymentDonePage.continue()
+
+    await homePage.load()
+    await homePage.header.validateUserLogged(authData.signup)
+    await homePage.header.doLogout()
   })
 })

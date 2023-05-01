@@ -13,7 +13,7 @@ class AccountCreatedPage extends Page {
     await expect(this.h2Title).toMatchText(title)
   }
 
-  async successMessage({ successMessage }) {
+  async validateSuccessMessage({ successMessage }) {
     await expect(this.pSuccessMessage.first()).toMatchText(successMessage)
   }
 

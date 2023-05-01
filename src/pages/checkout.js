@@ -8,11 +8,16 @@ class CheckoutPage extends Page {
 
     this.modalDialog = new ModalDialogComponent(page)
 
-    this.inputName = this.locator('input[data-qa="signup-name"]')
+    this.textareaComment = this.locator('#ordermsg textarea')
+    this.aPayment = this.locator('a[href*="payment"]')
   }
 
-  async fill() {
-    await this.buttonCheckout.click()
+  async addComment({ comment }) {
+    await this.textareaComment.fill(comment)
+  }
+
+  async placeOrder() {
+    await this.aPayment.click()
   }
 }
 
