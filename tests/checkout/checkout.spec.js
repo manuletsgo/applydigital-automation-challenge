@@ -9,8 +9,8 @@ const { blockAds } = require('utils/network')
 
 test.describe.configure({ mode: 'parallel' })
 
-test.describe('@smoke Authentication Tests', () => {
-  test('@item should be possible to add first item to the cart', async ({
+test.describe('@smoke Checkout Tests', () => {
+  test('@checkout should be possible to add first item to the cart and do checkout', async ({
     page,
     data
   }) => {
@@ -35,6 +35,6 @@ test.describe('@smoke Authentication Tests', () => {
     await cartPage.modalDialog.accessLogin()
 
     const loginPage = new LoginPage(page)
-    await loginPage.registerUser(data.auth.user)
+    await loginPage.registerUser(data.auth.login.user)
   })
 })
