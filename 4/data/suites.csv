@@ -1,0 +1,7 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Mon May 01 19:01:49 GMT 2023","Mon May 01 19:02:08 GMT 2023","19076","firefox","","@smoke Authentication Tests","","","@login should be possible to login",""
+"passed","Mon May 01 19:02:08 GMT 2023","Mon May 01 19:02:26 GMT 2023","17665","chromium","","@smoke Checkout Tests","","","@checkout should be possible to add first item to the cart and do checkout",""
+"passed","Mon May 01 19:01:49 GMT 2023","Mon May 01 19:02:00 GMT 2023","11233","chromium","","@smoke Authentication Tests","","","@login should be possible to login",""
+"passed","Mon May 01 19:01:48 GMT 2023","Mon May 01 19:02:19 GMT 2023","31075","webkit","","@smoke Checkout Tests","","","@checkout should be possible to add first item to the cart and do checkout",""
+"passed","Mon May 01 19:01:49 GMT 2023","Mon May 01 19:02:17 GMT 2023","28400","firefox","","@smoke Checkout Tests","","","@checkout should be possible to add first item to the cart and do checkout",""
+"passed","Mon May 01 19:01:49 GMT 2023","Mon May 01 19:02:13 GMT 2023","23778","webkit","","@smoke Authentication Tests","","","@login should be possible to login",""
