@@ -85,6 +85,7 @@ test.describe('@smoke Purchase Tests', () => {
     await homePage.header.validateUserLogged(createdUser)
     await homePage.header.doLogout()
 
+    await loginPage.verifyPage()
     await loginPage.validateSubtitle(data.auth.page)
     await loginPage.doLogin(createdUser)
 
