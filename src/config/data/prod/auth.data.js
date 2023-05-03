@@ -17,6 +17,17 @@ module.exports = {
     },
     messageLogged: ` Logged in as ${firstName}`
   },
+  loginError: {
+    incorrectEmail: {
+      emailAddress: 'testzz1xs@asae.ee',
+      password: 'GDQ@pde-kru5wcz5rae'
+    },
+    incorrectPassword: {
+      emailAddress: 'emanuele4dev@gmail.com',
+      password: '123#aQA'
+    },
+    errorMessage: 'Your email or password is incorrect!'
+  },
   signup: {
     title: 'Enter Account Information',
     name,

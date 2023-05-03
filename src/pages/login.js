@@ -18,6 +18,8 @@ class LoginPage extends Page {
     this.inputEmailAddressLogin = this.locator('input[data-qa="login-email"]')
     this.inputPassword = this.locator('input[data-qa="login-password"]')
     this.buttonLogin = this.locator('button[data-qa="login-button"]')
+
+    this.pErrorMessage = this.locator('.login-form p')
   }
 
   async validateSubtitle({ subtitleLogin, subtitleSignup }) {
@@ -35,6 +37,11 @@ class LoginPage extends Page {
     await this.inputEmailAddressLogin.fill(emailAddress)
     await this.inputPassword.fill(password)
     await this.buttonLogin.click()
+  }
+
+  async validateErrorMessage({ errorMessage }) {
+    await expect(this.pErrorMessage).toBeVisible()
+    await expect(this.pErrorMessage).toMatchText(errorMessage)
   }
 }
 
