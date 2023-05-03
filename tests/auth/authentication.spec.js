@@ -1,7 +1,7 @@
 const { test } = require('config/customTest')
 
 const { HomePage } = require('pages/home')
-const { LoginPage } = require('pages/login')
+const { LoginPage } = require('pages/authentication/login')
 
 const { blockAds } = require('utils/network')
 const { loginHook } = require('utils/hooks')

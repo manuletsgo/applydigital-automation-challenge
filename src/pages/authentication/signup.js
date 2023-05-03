@@ -1,6 +1,6 @@
-const { Page } = require('./_page')
+const { Page } = require('../_page')
 
-const { ModalDialogComponent } = require('../components/modalDialog')
+const { ModalDialogComponent } = require('../../components/modalDialog')
 
 class SignupPage extends Page {
   constructor(page) {

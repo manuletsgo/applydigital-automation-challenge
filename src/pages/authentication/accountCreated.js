@@ -1,4 +1,4 @@
-const { Page } = require('./_page')
+const { Page } = require('../_page')
 
 class AccountCreatedPage extends Page {
   constructor(page) {

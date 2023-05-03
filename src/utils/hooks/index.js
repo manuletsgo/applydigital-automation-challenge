@@ -1,5 +1,5 @@
 const { HomePage } = require('pages/home')
-const { LoginPage } = require('pages/login')
+const { LoginPage } = require('pages/authentication/login')
 
 async function loginHook(page, data) {
   const homePage = new HomePage(page)
