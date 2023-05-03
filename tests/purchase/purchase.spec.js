@@ -9,8 +9,10 @@ const { AccountCreatedPage } = require('pages/accountCreated')
 const { CheckoutPage } = require('pages/checkout')
 const { PaymentPage } = require('pages/payment')
 const { PaymentDonePage } = require('pages/paymentDone')
+const { ContactUsPage } = require('pages/contactUs')
 
 const { blockAds } = require('utils/network')
+const FileUtils = require('utils/file')
 
 test.describe.configure({ mode: 'parallel' })
 
@@ -47,7 +49,9 @@ test.describe('@smoke Purchase Tests', () => {
     await signupPage.validateTitle(data.auth.signup)
     await signupPage.fillSignupForm(data.auth.signup)
 
-    const authData = data.auth
+    const createdUser = data.auth.signup
+
+    FileUtils.saveData('createdUser', createdUser)
 
     const accountCreated = new AccountCreatedPage(page)
     await accountCreated.validateTitle(data.auth.accountCreated)
@@ -55,7 +59,7 @@ test.describe('@smoke Purchase Tests', () => {
     await accountCreated.continue()
 
     await homePage.load()
-    await homePage.header.validateUserLogged(authData.signup)
+    await homePage.header.validateUserLogged(createdUser)
     await homePage.header.accessCart()
 
     await cartPage.validateBreadcrumb(data.purchase.cart)
@@ -78,7 +82,27 @@ test.describe('@smoke Purchase Tests', () => {
     await paymentDonePage.continue()
 
     await homePage.load()
-    await homePage.header.validateUserLogged(authData.signup)
+    await homePage.header.validateUserLogged(createdUser)
     await homePage.header.doLogout()
+
+    await loginPage.validateSubtitle(data.auth.page)
+    await loginPage.doLogin(createdUser)
+
+    await homePage.load()
+    await homePage.header.validateUserLogged(createdUser)
+    await homePage.header.accessContactUs()
+
+    const contactUsPage = new ContactUsPage(page)
+    await contactUsPage.load()
+    await contactUsPage.validateTitle(data.purchase.contactUs)
+
+    page.on('dialog', async dialog => {
+      expect(dialog.type()).toContain('confirm')
+      expect(dialog.message()).toContain('Press OK to proceed!')
+      await dialog.accept()
+    })
+
+    await contactUsPage.fillContactForm(createdUser)
+    await contactUsPage.validateSuccessMessage(data.purchase.contactUs)
   })
 })

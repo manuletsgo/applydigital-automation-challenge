@@ -19,6 +19,8 @@ class Page {
       await this.page.waitForNavigation({
         url: pageUrlRegex
       })
+
+    await this.page.waitForLoadState('load')
   }
 
   verifyPage() {

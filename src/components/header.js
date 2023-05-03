@@ -10,6 +10,7 @@ class HeaderComponent extends Component {
     this.aUserLogged = this.componentLocator(
       'div.shop-menu li a:not([href*="/"])'
     )
+    this.aContactUs = this.componentLocator('a[href*="contact_us"]')
   }
   async accessCart() {
     await expect(this.aCart).toBeVisible()
@@ -28,6 +29,11 @@ class HeaderComponent extends Component {
 
   async validateUserLogged({ messageLogged }) {
     await expect(this.aUserLogged).toMatchText(messageLogged)
+  }
+
+  async accessContactUs() {
+    await expect(this.aContactUs).toBeVisible()
+    await this.aContactUs.click()
   }
 }
 

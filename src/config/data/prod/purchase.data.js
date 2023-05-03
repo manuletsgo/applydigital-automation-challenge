@@ -18,5 +18,9 @@ module.exports = {
   paymentDone: {
     title: 'Order Placed!',
     successMessage: 'Congratulations! Your order has been confirmed!'
+  },
+  contactUs: {
+    title: 'Contact Us',
+    successMessage: 'Success! Your details have been submitted successfully.'
   }
 }

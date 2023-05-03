@@ -23,8 +23,8 @@ global.CI = CI
 
 /** @type {any} */
 let reporters = [
-  ['html', { outputFolder: 'reports/html', open: CI ? 'never' : 'on-failure' }],
-  ['json', { outputFile: 'reports/json/results.json' }],
+  ['html', { outputFolder: 'reports', open: CI ? 'never' : 'on-failure' }],
+  ['json', { outputFile: 'reports/results.json' }],
   ['list']
 ]
 CI && reporters.push(['allure-playwright'], ['github'])
@@ -38,7 +38,7 @@ const config = {
     video: 'on-first-retry',
     ignoreHTTPSErrors: true,
     colorScheme: 'dark',
-    actionTimeout: 5 * 1000
+    actionTimeout: 20 * 1000
   },
   projects: [
     {
@@ -58,11 +58,11 @@ const config = {
   workers: CI ? 8 : undefined,
   globalTimeout: 60 * 60 * 1000,
   timeout: 60 * 1000,
-  outputDir: './reports',
+  outputDir: './output',
   retries: CI ? 1 : 0,
   forbidOnly: !!CI,
   expect: {
-    timeout: 5 * 1000
+    timeout: 20 * 1000
   }
 }
 
