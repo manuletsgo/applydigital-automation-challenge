@@ -19,7 +19,6 @@ async function logoutHook(page) {
   const homePage = new HomePage(page)
   await homePage.goto()
   await homePage.header.doLogout()
-  await homePage.header.validateSignupLogin()
 }
 
 module.exports = { loginHook, logoutHook }

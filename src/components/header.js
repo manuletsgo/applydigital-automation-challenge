@@ -20,6 +20,7 @@ class HeaderComponent extends Component {
   async doLogout() {
     await expect(this.aLogout).toBeVisible()
     await this.aLogout.click()
+    await expect(this.aSignupLogin).toBeVisible()
   }
 
   async accessSignupLogin() {
