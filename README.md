@@ -6,8 +6,8 @@
   <img src="./docs/automation-exercise.png" width="600">
 </p>
 
-
 ## About Technologies and Architecture 🚀
+
 #### The project uses structures for large-scale maintenance, performance and reuse, such as:
 
 - Javascript: easy-to-understand language, with a low learning curve. It has support for WEB, API and Mobile automations (using Appium)
@@ -23,13 +23,9 @@
 - Happy and sad flow validation (successful and exceptions)
 - CSS Selector: element mapping
 
----
-
 ## Test Documentation 📚
 
 To know about Test plan, Design, and Strategy: [Test Documentation](TESTDOC.md).
-
----
 
 ## Requirements ⚡
 
@@ -53,8 +49,6 @@ To know about Test plan, Design, and Strategy: [Test Documentation](TESTDOC.md).
 - `Gruntfuggly.todo-tree`
 - `natqe.reload`
 
----
-
 ### Setup ⚙️
 
 ### Install Browser and Dependencies
@@ -70,8 +64,6 @@ yarn install
 ```
 yarn setup
 ```
-
----
 
 ## How to Run 🎡
 
@@ -123,8 +115,6 @@ yarn report:trace [path/url to trace.zip]
 --project [chromium|firefox|webkit]
 ```
 
----
-
 ## Dependencies 🔧
 
 - [playwright](https://playwright.dev)
@@ -134,21 +124,26 @@ yarn report:trace [path/url to trace.zip]
 - [eslint-plugin-playwright](https://github.com/playwright-community/eslint-plugin-playwright)
 - [prettier](https://prettier.io)
 
----
-
 ### Reports 📂
 
-At the end of the execution, the test evidences will be generated in the  `reports` folder.
+At the end of the execution, the test evidences will be generated in the `reports` folder.
 
 Besides that, Github Actions is configured with Allure and the reports can be viewed in the description of the project or [here.](https://manuletsgo.github.io/applydigital-automation-challenge)
 
 Some things that could be found in the Allure Report:
-- Video (need to access the test suite - check below)
-- Trace (need to access the test suite - check below)
+
+- Video - available only at broken and retries tests (need to access the test suite - check below)
+- Trace - available only at broken and retries tests (need to access the test suite - check below)
 - Metrics
 - Trend
 - Duration
 
+Example available of video and trace  on a retried test:
 <p>
   <img src="./docs/allure-reports.png">
+</p>
+
+How to access a video or trace in the previous run tests:
+<p>
+  <img src="./docs/allure-reports-video.gif">
 </p>

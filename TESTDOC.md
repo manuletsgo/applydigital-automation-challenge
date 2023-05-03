@@ -9,7 +9,6 @@ Functional Tests
   - [x] Login Exception with incorrect password
 - [x] Logout
 
----
 
 ## Design & Strategy 🔍
 
